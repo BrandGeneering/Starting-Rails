@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
 	def new
 	end
 
+
 	def create
 		@article = Article.new(article_params)
 
@@ -20,6 +21,17 @@ class ArticlesController < ApplicationController
 			render 'new'
 		end
 	end
+
+	def update
+		@article = Article.find(params[:id])		
+
+		if @article.updae(article_params)
+			redirect_to @article
+		else
+			render 'edit'
+		end
+	end
+
 
 # strong params
 private
